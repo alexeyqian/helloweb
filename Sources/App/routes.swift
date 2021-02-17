@@ -1,21 +1,30 @@
 import Vapor
 
 func routes(_ app: Application) throws {
-    app.get { req in
-        return "It works!"
-    }
-
+    
     app.get("hello") { req -> String in
         return "Hello, world!"
     }
     
-    app.get("hello2") { req -> EventLoopFuture<View> in
-        return req.view.render("hello", ["name": "Leaf"])
+    app.get { req -> EventLoopFuture<View> in
+        return req.view.render("home", ["title": "Home"])
     }
     
-    app.get("hello3") { req -> EventLoopFuture<View> in
-        return req.view.render("hello", ["name": "Leaf2"])
+    struct SolarSystem: Codable{
+        var planets = ["enus", "Earth", "Mars"]
     }
     
-
+    app.get("planets"){ req -> EventLoopFuture<View> in
+        return req.view.render("planets", SolarSystem())
+    }
+    
+    // api routes
+    let apiRoutes = app.grouped("api", "v1")
+    
+    let bookAPIController = BookAPIController()
+    try apiRoutes.grouped("books").register(collection: bookAPIController)
+    
+    // page routes
+    let galaxyController = GalaxyController()
+    try app.grouped("galaxies").register(collection: galaxyController)
 }

@@ -1,0 +1,11 @@
+
+#extend("master"):
+#export("body"):
+Planets:
+<ul>
+    #for(planet in planets):
+        <li>#(planet)</li>
+    #endfor
+</ul>
+#endexport
+#endextend

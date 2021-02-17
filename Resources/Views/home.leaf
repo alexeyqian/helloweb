@@ -1,5 +1,5 @@
 #extend("master"):
     #export("body"):
-        <div>Hello, #(name)! xxx</div>
+        <h1>Hello world</h1>
     #endexport
 #endextend

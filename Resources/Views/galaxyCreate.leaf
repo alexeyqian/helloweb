@@ -1,0 +1,20 @@
+
+#extend("master"):
+
+#export("body"):
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form method="post" action="/galaxies">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Name">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+#endexport
+#endextend

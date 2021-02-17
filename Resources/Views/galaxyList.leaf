@@ -1,0 +1,15 @@
+
+
+#extend("master"):
+#export("body"):
+Galaxies:
+<ul>
+    #for(galaxy in galaxies):
+        <li>[#(galaxy.id)] #(galaxy.name)</li>
+    #endfor
+</ul>
+
+<a href="/galaxies/create">Create</a>
+
+#endexport
+#endextend
